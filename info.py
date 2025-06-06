@@ -2,6 +2,9 @@ import re, logging
 from os import environ
 from Script import script
 
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+
 def is_enabled(type, value):
     data = environ.get(type, str(value))
     if data.lower() in ["true", "yes", "1", "enable", "y"]:
