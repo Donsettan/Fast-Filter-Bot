@@ -323,7 +323,10 @@ async def stats(bot, message):
         await message.delete()
         return
     files = await Media.count_documents()
-    secnd_files = await SecondMedia.count_documents()
+    if SecondMedia:
+        secnd_files = await SecondMedia.count_documents()
+    else:
+        secnd_files = 0
     users = await db.total_users_count()
     chats = await db.total_chat_count()
     used_files_db_size = get_size(await db.get_files_db_size())
